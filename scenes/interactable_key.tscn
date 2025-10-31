@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://udx1pma76mx3"]
+
+[ext_resource type="Script" uid="uid://cqmwg8o5athkl" path="res://scripts/interactable_key.gd" id="1_43s7d"]
+[ext_resource type="Texture2D" uid="uid://2nipwvdikijq" path="res://assets/EnemyBug.png" id="2_6uqmr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bufor"]
+size = Vector2(56, 64)
+
+[node name="Interactable_Key" type="Area2D"]
+script = ExtResource("1_43s7d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 9.536743e-07)
+scale = Vector2(0.1305, 0.1265)
+texture = ExtResource("2_6uqmr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_bufor")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
