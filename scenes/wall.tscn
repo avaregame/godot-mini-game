@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6h0j1b20o7uh"]
+
+[ext_resource type="Texture2D" uid="uid://c8glfvieunrxa" path="res://assets/Wallpixel.png" id="1_wykyb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvhfp"]
+size = Vector2(21, 128)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wykyb"]
+cull_mode = 1
+polygon = PackedVector2Array(-11, 64, 13, 64, 13, -64, -10, -64)
+
+[node name="Wall" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.5, 0)
+scale = Vector2(0.25000006, 0.256)
+texture = ExtResource("1_wykyb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_uvhfp")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_wykyb")

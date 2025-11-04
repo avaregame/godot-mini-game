@@ -5,7 +5,6 @@ extends CharacterBody2D
 @export var acceleration: int = 10
 
 func _ready():
-	# Oyun başladığında bir kerelik çalışan fonksiyon.
 	pass
 
 func _physics_process(delta):

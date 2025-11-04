@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxwj8dtqb4ll2"]
+[gd_scene load_steps=6 format=3 uid="uid://dxwj8dtqb4ll2"]
 
 [ext_resource type="Script" uid="uid://c7g0mchah8qx8" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://cycb86como4lc" path="res://assets/PlayerFrog.png" id="2_qhqgy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
-size = Vector2(52, 52)
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 25.179358
+
+[sub_resource type="Gradient" id="Gradient_g2els"]
+offsets = PackedFloat32Array(0, 0.30666667, 0.5, 0.64, 0.97333336)
+colors = PackedColorArray(1, 1, 1, 1, 0.33999997, 0.33999997, 0.33999997, 1, 0.1193617, 0.1193617, 0.1193617, 1, 0.0075088656, 0.0075088656, 0.0075088656, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qhqgy"]
+gradient = SubResource("Gradient_g2els")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
@@ -16,6 +27,15 @@ texture = ExtResource("2_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_dqkch")
+shape = SubResource("CircleShape2D_g2els")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 0.8784314, 1)
+energy = 1.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 2.0
+texture = SubResource("GradientTexture2D_qhqgy")
+texture_scale = 2.94
