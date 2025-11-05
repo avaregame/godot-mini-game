@@ -1,0 +1,28 @@
+{
+  "test_dialog": {
+	"character": "Gizemli Yabancı",
+	"text": "Bu diyarlarda kaybolmuş görünüyorsun. Işığın seni koruyacak, ama dikkatli ol...",
+	"avatar": "res://assets/characters/mysterious_stranger.png",
+	"options": [
+	  {"text": "Ben kimim? Burada ne yapıyorum?", "next": "who_am_i"},
+	  {"text": "Bu ışık nedir? Nasıl kullanacağım?", "next": "about_light"},
+	  {"text": "Teşekkürler, devam edeceğim.", "next": "close"}
+	]
+  },
+  "who_am_i": {
+	"character": "Gizemli Yabancı", 
+	"text": "Sen... uyanan. Kadim bir uykudan uyandın. Anıların zamanla geri gelecek.",
+	"options": [
+	  {"text": "Peki ya bu dünya? Burası neresi?", "next": "about_world"},
+	  {"text": "Anladım, geri dönmek istiyorum.", "next": "test_dialog"}
+	]
+  },
+  "about_light": {
+	"character": "Gizemli Yabancı",
+	"text": "O ışık, ruhunun bir yansıması. Karanlıkta yolunu aydınlatır, ama aynı zamanda seni görünür kılar...",
+	"options": [
+	  {"text": "Tehlikeli mi?", "next": "about_danger"},
+	  {"text": "Anladım, teşekkürler.", "next": "test_dialog"}
+	]
+  }
+}

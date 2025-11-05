@@ -4,18 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://2nipwvdikijq" path="res://assets/EnemyBug.png" id="2_6uqmr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bufor"]
-size = Vector2(56, 64)
+size = Vector2(26, 35)
 
 [node name="Interactable_Key" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_43s7d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, 9.536743e-07)
-scale = Vector2(0.1305, 0.1265)
+position = Vector2(-4.7683716e-07, 9.536743e-07)
+scale = Vector2(0.052, 0.06925)
 texture = ExtResource("2_6uqmr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_bufor")
+
+[node name="InteractionHint" type="Sprite2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

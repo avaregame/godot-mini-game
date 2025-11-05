@@ -1,25 +1,32 @@
 extends Area2D
 
-@export var item_name: String = "Gizemli Anahtar"
-@export var interaction_text: String = "E tuşuna basarak al"
+@export var dialog_id: String = "test_dialog"
+@export var npc_name: String = "Gizemli Yabancı"
 
-var player_in_range: bool = false
+func _ready():
+	# Collision ayarları
+	collision_layer = 2  # Interactable layer
+	collision_mask = 1   # Player layer'ı ile etkileşim
+	
+	# GRUBA EKLE - BU ÇOK ÖNEMLİ!
+	add_to_group("interactables")
+	
+	# InteractionHint'i gizle
+	if has_node("InteractionHint"):
+		$InteractionHint.hide()
+
+# SINYALLERİ OTOMATİK BAĞLAMA - Godot zaten bağlıyor!
+# Ayrıca connect() yapmıyoruz!
 
 func _on_body_entered(body):
-	if body.name == "Player":
-		player_in_range = true
-		print("Anahtar yakınında! ", interaction_text)
+	print("🚶 Body entered interactable_key: ", body.name)
+	if body.name == "Player" and has_node("InteractionHint"):
+		$InteractionHint.show()
 
 func _on_body_exited(body):
-	if body.name == "Player":
-		player_in_range = false
-		print("Anahtardan uzaklaştı")
+	print("🏃 Body exited interactable_key: ", body.name)  
+	if body.name == "Player" and has_node("InteractionHint"):
+		$InteractionHint.hide()
 
-func _input(event):
-	if player_in_range and event.is_action_pressed("ui_interact"):
-		collect_item()
-
-func collect_item():
-	print(item_name, " toplandı!")
-	# Burada toplama animasyonu, envantere ekleme vs. yapılabilir
-	queue_free()  # Nesneyi sahneden kaldır
+func get_dialog_id():
+	return dialog_id
